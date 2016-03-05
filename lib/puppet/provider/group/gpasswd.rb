@@ -22,7 +22,7 @@ Puppet::Type.type(:group).provide :gpasswd, :parent => Puppet::Type::Group::Prov
     @resource[:members] and cmd += @resource[:members].map{ |x|
       [ command(:addmember),'-a',x,@resource[:name] ].shelljoin
     }
-    
+
     mod_group(cmd)
 
     # We're returning /bin/true here since the Nameservice classes
@@ -63,11 +63,14 @@ Puppet::Type.type(:group).provide :gpasswd, :parent => Puppet::Type::Group::Prov
     if @resource[:attribute_membership] == :minimum
       to_be_added = to_be_added | @objectinfo.mem
     else
-      to_be_removed = @objectinfo.mem - to_be_added
-      to_be_added = to_be_added - @objectinfo.mem
+      # inclusive strategy
+      # assuming that provided members are complete set
+      # we mark rest for removal
+      to_be_removed = to_be_added - @objectinfo.mem
+      to_be_added = @objectinfo.mem - to_be_added
 
       not to_be_removed.empty? and cmd += to_be_removed.map { |x|
-        [ command(:addmember),'-d',x,@resource[:name] ].shelljoin
+        [ command(:delmember),'-d',x,@resource[:name] ].shelljoin
       }
 
     end
