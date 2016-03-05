@@ -66,8 +66,8 @@ Puppet::Type.type(:group).provide :gpasswd, :parent => Puppet::Type::Group::Prov
       # inclusive strategy
       # assuming that provided members are complete set
       # we mark rest for removal
-      to_be_removed = to_be_added - @objectinfo.mem
-      to_be_added = @objectinfo.mem - to_be_added
+      to_be_removed = @objectinfo.mem - to_be_added
+      to_be_added = to_be_added - @objectinfo.mem
 
       not to_be_removed.empty? and cmd += to_be_removed.map { |x|
         [ command(:delmember),'-d',x,@resource[:name] ].shelljoin
