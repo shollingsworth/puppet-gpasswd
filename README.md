@@ -7,15 +7,17 @@ gpasswd
 This is a module that enhances the native group type on systems
 supporting gpasswd to allow for the manipulation of group memebers.
 
-Specifically, it adds the :manages_members attribute to the native
+Specifically, it adds the `:manages_members` attribute to the native
 Puppet group type. No alterations to your group code are required!
 
 Examples
 ========
 
+```puppet
 group { 'test':
   members => ['foo','bar','baz']
 }
+```
 
 License
 -------
