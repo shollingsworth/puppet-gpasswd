@@ -21,6 +21,20 @@ group { 'test':
 }
 ```
 
+## Installation
+
+Add to your `Puppetfile`:
+
+```ruby
+mod 'deric-gpasswd'
+```
+
+development version (master branch from github):
+```ruby
+mod 'deric-gpasswd', :git => 'https://github.com/deric/puppet-gpasswd.git'
+```
+
+
 License
 -------
 
