@@ -24,12 +24,13 @@ License
 
 Apache License 2.0
 
-Contact
+Authors
 -------
 
-Trevor Vaughan <tvaughan@onyxpoint.com>
+  * Trevor Vaughan <tvaughan@onyxpoint.com>
+  * Tomas Barton
 
 Support
 -------
 
-Please log tickets and issues at our [Gpasswd Github Site](https://github.com/onyxpoint/puppet-gpasswd/issues)
+Please log tickets and issues at our [Gpasswd Github Site](https://github.com/deric/puppet-gpasswd/issues)
