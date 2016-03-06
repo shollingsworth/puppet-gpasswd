@@ -1,5 +1,7 @@
-puppet-gpasswd
-==============
+# puppet-gpasswd
+
+[![Puppet Forge](http://img.shields.io/puppetforge/v/deric/gpasswd.svg)](https://forge.puppetlabs.com/deric/gpasswd)
+[![Build Status](https://travis-ci.org/deric/puppet-gpasswd.png?branch=master)](https://travis-ci.org/deric/puppet-gpasswd)
 
 Puppet-driven local group modification capabilities for Linux systems
 gpasswd
