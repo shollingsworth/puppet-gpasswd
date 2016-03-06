@@ -5,6 +5,7 @@ group :development, :test do
   gem 'rspec-system-puppet', '~>2.0'
   gem 'puppet-lint'
   gem 'puppet-blacksmith',  '> 3.0'
+  gem 'metadata-json-lint'
 end
 
 if puppetversion = ENV['PUPPET_GEM_VERSION']

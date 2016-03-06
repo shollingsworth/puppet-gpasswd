@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "author": "Tomas Barton <barton.tomas@gmail.com>",
   "summary": "Adds support for :manages_members to the Linux group native type",
-  "license": "Apache License, Version 2.0",
+  "license": "Apache-2.0",
   "source": "https://github.com/deric/puppet-gpasswd",
   "project_page": "https://github.com/deric/puppet-gpasswd",
   "issues_url": "https://github.com/deric/puppet-gpasswd/issues",
