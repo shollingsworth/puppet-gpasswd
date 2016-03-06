@@ -1,6 +1,6 @@
 {
   "name": "deric-gpasswd",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Tomas Barton <barton.tomas@gmail.com>",
   "summary": "Adds support for :manages_members to the Linux group native type",
   "license": "Apache-2.0",
@@ -9,5 +9,6 @@
   "issues_url": "https://github.com/deric/puppet-gpasswd/issues",
   "description": "The Linux group native type cannot manage local group membership. This remedies the situation by providing the :manages_members attribute and using gpasswd for group modification.",
   "dependencies": [
-   ]
+
+  ]
 }
