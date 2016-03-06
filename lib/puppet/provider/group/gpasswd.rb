@@ -51,7 +51,9 @@ Puppet::Type.type(:group).provide :gpasswd, :parent => Puppet::Type::Group::Prov
     if ( @resource[:attribute_membership] == :minimum ) and
        (@resource[:members] - @objectinfo.mem).empty?
     then
-        retval = @resource[:members]
+      retval = @resource[:members]
+    else
+      retval = @resource[:members]
     end
 
     retval
@@ -66,8 +68,10 @@ Puppet::Type.type(:group).provide :gpasswd, :parent => Puppet::Type::Group::Prov
       # inclusive strategy
       # assuming that provided members are complete set
       # we mark rest for removal
-      to_be_removed = (@objectinfo.mem - to_be_added).sort
-      to_be_added = (to_be_added - @objectinfo.mem).sort
+      puppet_members = members.dup.sort!
+      # @objectinfo contains users with ensure => absent
+      to_be_added = (@objectinfo.mem - puppet_members).sort
+      to_be_removed = (puppet_members - @objectinfo.mem).sort
 
       not to_be_removed.empty? and cmd += to_be_removed.map { |x|
         [ command(:delmember),'-d',x,@resource[:name] ].shelljoin
