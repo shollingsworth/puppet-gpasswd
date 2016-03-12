@@ -114,21 +114,21 @@ describe Puppet::Type.type(:group).provider(:gpasswd) do
         old_members = ['old_one','old_two','old_three','test_three']
         members = ['test_one','test_two','test_three']
         Etc.stubs(:getgrnam).with('mygroup').returns(
-          Struct::Group.new('mygroup','x','99999',members)
+          Struct::Group.new('mygroup','x','99999',old_members)
         )
         resource[:attribute_membership] = 'inclusive'
+        resource[:members] = members
 
-        (members - old_members).each do |to_add|
+        (resource[:members] - old_members).each do |to_add|
           provider.expects(:execute).with("/usr/bin/gpasswd -a #{to_add} mygroup",
             :custom_environment => {})
         end
-        (old_members - members).each do |to_del|
+        (old_members - resource[:members]).each do |to_del|
           provider.expects(:execute).with("/usr/bin/gpasswd -d #{to_del} mygroup",
             :custom_environment => {})
         end
         provider.create
-        # the logic is slightly twisted in puppet, not all cached resources are valid
-        provider.members=(old_members)
+        provider.members=(members)
       end
     end
   end

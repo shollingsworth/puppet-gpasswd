@@ -70,8 +70,8 @@ Puppet::Type.type(:group).provide :gpasswd, :parent => Puppet::Type::Group::Prov
       # we mark rest for removal
       puppet_members = members.dup.sort!
       # @objectinfo contains users with ensure => absent
-      to_be_added = (@objectinfo.mem - puppet_members).sort
-      to_be_removed = (puppet_members - @objectinfo.mem).sort
+      to_be_removed = (@objectinfo.mem - puppet_members).sort
+      to_be_added = (puppet_members - @objectinfo.mem).sort
 
       not to_be_removed.empty? and cmd += to_be_removed.map { |x|
         [ command(:delmember),'-d',x,@resource[:name] ].shelljoin
