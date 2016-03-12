@@ -101,6 +101,7 @@ Puppet::Type.type(:group).provide :gpasswd, :parent => Puppet::Type::Group::Prov
   def mod_group(cmds)
     cmds.each do |run_cmd|
       begin
+        Puppet.info("accounts: #{run_cmd}")
         execute(run_cmd,:custom_environment => @custom_environment)
       rescue Puppet::ExecutionFailure => e
         if $?.exitstatus == 3 then
