@@ -5,7 +5,6 @@ require 'puppetlabs_spec_helper/rake_tasks'
 # For playing nice with mock
 File.umask(027)
 
-require 'simp/rake/pkg'
 # blacksmith does not support ruby 1.8.7 anymore
 require 'puppet_blacksmith/rake_tasks' if ENV['RAKE_ENV'] != 'ci' && RUBY_VERSION.split('.')[0,3].join.to_i > 187
 
@@ -26,6 +25,3 @@ rescue LoadError
   puts "== WARNING: Gem puppet-lint not found, lint tests cannot be run! =="
 end
 
-Simp::Rake::Pkg.new( File.dirname( __FILE__ ) ) do | t |
-  t.clean_list << "#{t.base_dir}/spec/fixtures/hieradata/hiera.yaml"
-end
