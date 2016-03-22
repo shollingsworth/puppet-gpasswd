@@ -56,7 +56,7 @@ Puppet::Type.type(:group).provide :gpasswd, :parent => Puppet::Type::Group::Prov
       retval = @objectinfo.mem
     end
 
-    retval
+    retval.sort
   end
 
   def members=(members)
