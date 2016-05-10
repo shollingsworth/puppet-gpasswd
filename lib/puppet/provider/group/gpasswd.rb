@@ -19,7 +19,7 @@ Puppet::Type.type(:group).provide :gpasswd, :parent => Puppet::Type::Group::Prov
     # to be added from scratch.
     cmd = Array(super.map{|x| x = "#{x}"}.shelljoin)
 
-    @resource[:members] and cmd += @resource[:members].map{ |x|
+    @resource[:members] and cmd += @resource[:members].sort.map{ |x|
       [ command(:addmember),'-a',x,@resource[:name] ].shelljoin
     }
 
