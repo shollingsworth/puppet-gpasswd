@@ -73,13 +73,13 @@ Puppet::Type.type(:group).provide :gpasswd, :parent => Puppet::Type::Group::Prov
       to_be_removed = (@objectinfo.mem - puppet_members).sort
       to_be_added = (puppet_members - @objectinfo.mem).sort
 
-      not to_be_removed.empty? and cmd += to_be_removed.map { |x|
+      not to_be_removed.empty? and cmd += to_be_removed.sort.map { |x|
         [ command(:delmember),'-d',x,@resource[:name] ].shelljoin
       }
 
     end
 
-    not to_be_added.empty? and cmd += to_be_added.map { |x|
+    not to_be_added.empty? and cmd += to_be_added.sort.map { |x|
       [ command(:addmember),'-a',x,@resource[:name] ].shelljoin
     }
 
